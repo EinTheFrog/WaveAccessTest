@@ -35,17 +35,36 @@ class CandidateListViewModel @Inject constructor(
         viewModelScope.launch {
             _candidateListState.update { state -> state.copy(isLoading = true) }
 
-            val result = candidatesUseCase.fetchCandidates()
-            when(result) {
-                is Result.Success -> {
-                    _candidateListState.update { state -> state.copy(candidates = result.data) }
-                }
-                is Result.Error -> {
-                    Log.e(CANDIDATE_VIEW_MODEL_TAG, result.exception.toString(), result.exception)
-                }
+            getLocalCandidates()
+            if (candidateListState.value.candidates.isEmpty()) {
+                fetchCandidates()
             }
 
             _candidateListState.update { state -> state.copy(isLoading = false) }
+        }
+    }
+
+    private suspend fun fetchCandidates() {
+        val result = candidatesUseCase.fetchCandidates()
+        when(result) {
+            is Result.Success -> {
+                _candidateListState.update { state -> state.copy(candidates = result.data) }
+            }
+            is Result.Error -> {
+                Log.e(CANDIDATE_VIEW_MODEL_TAG, result.exception.toString(), result.exception)
+            }
+        }
+    }
+
+    private suspend fun getLocalCandidates() {
+        val result = candidatesUseCase.getLocalCandidates()
+        when(result) {
+            is Result.Success -> {
+                _candidateListState.update { state -> state.copy(candidates = result.data) }
+            }
+            is Result.Error -> {
+                Log.e(CANDIDATE_VIEW_MODEL_TAG, result.exception.toString(), result.exception)
+            }
         }
     }
 }

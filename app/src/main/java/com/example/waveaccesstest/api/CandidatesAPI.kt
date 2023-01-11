@@ -18,14 +18,14 @@ class CandidatesAPI {
         for (i in 0 until candidateArray.length()) {
             val candidateJson = candidateArray.get(i) as JSONObject
             val friendsJsonArray = candidateJson.getJSONArray("friends")
-            val friends = mutableListOf<Int>()
+            val friends = mutableListOf<Long>()
             for (j in 0 until friendsJsonArray.length()) {
                 val friendJson = friendsJsonArray.get(j) as JSONObject
-                val friendId = friendJson.getInt("id")
+                val friendId = friendJson.getLong("id")
                 friends.add(friendId)
             }
             val candidate = Candidate(
-                id = candidateJson.getInt("id"),
+                id = candidateJson.getLong("id"),
                 isActive = candidateJson.getBoolean("isActive"),
                 age = candidateJson.getInt("age"),
                 eyeColor = candidateJson.getString("eyeColor"),

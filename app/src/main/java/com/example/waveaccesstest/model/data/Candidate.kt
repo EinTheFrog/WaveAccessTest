@@ -1,7 +1,7 @@
 package com.example.waveaccesstest.model.data
 
 data class Candidate(
-    val id: Int,
+    val id: Long,
     val isActive: Boolean,
     val age: Int,
     val eyeColor: String,
@@ -14,6 +14,6 @@ data class Candidate(
     val registered: String,
     val latitude: Double,
     val longitude: Double,
-    val friends: List<Int>,
+    val friends: List<Long>,
     val favoriteFruit: String
 )
