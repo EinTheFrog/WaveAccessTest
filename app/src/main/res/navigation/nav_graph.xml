@@ -10,17 +10,25 @@
         android:name="com.example.waveaccesstest.ui.home.HomeScreenFragment">
         <action
             android:id="@+id/action_homeScreenFragment_to_detailsScreenFragment"
-            app:destination="@id/detailsScreenFragment" />
+            app:destination="@id/detailsScreenFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
         android:id="@+id/detailsScreenFragment"
         android:name="com.example.waveaccesstest.ui.details.DetailsScreenFragment">
-        <action
-            android:id="@+id/action_detailsScreenFragment_to_detailsScreenFragment"
-            app:destination="@id/detailsScreenFragment" />
         <argument
             android:name="candidateId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_detailsScreenFragment_to_detailsScreenFragment"
+            app:destination="@id/detailsScreenFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>
