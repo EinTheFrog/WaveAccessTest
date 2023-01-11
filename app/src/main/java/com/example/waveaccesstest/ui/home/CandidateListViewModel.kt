@@ -44,6 +44,14 @@ class CandidateListViewModel @Inject constructor(
         }
     }
 
+    fun syncCandidates() {
+        viewModelScope.launch {
+            _candidateListState.update { state -> state.copy(isLoading = true) }
+            fetchCandidates()
+            _candidateListState.update { state -> state.copy(isLoading = false) }
+        }
+    }
+
     private suspend fun fetchCandidates() {
         val result = candidatesUseCase.fetchCandidates()
         when(result) {
