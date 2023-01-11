@@ -8,16 +8,16 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 interface CandidatesUseCase {
-    suspend fun updateCandidates(): Result<List<Candidate>>
-    suspend fun getCandidates(): Result<List<Candidate>>
+    suspend fun fetchCandidates(): Result<List<Candidate>>
+    suspend fun getLocalCandidates(): Result<List<Candidate>>
 }
 
-class CandidateUseCaseImpl @Inject constructor(
+class CandidatesUseCaseImpl @Inject constructor(
     private val candidatesAPI: CandidatesAPI,
     private val candidatesMapper: CandidatesMapper
 ) : CandidatesUseCase {
 
-    override suspend fun updateCandidates(): Result<List<Candidate>> = withContext(Dispatchers.IO) {
+    override suspend fun fetchCandidates(): Result<List<Candidate>> = withContext(Dispatchers.IO) {
         try {
             val dataCandidates = candidatesAPI.getCandidates()
             val domainCandidates = dataCandidates.map { candidatesMapper.dataToDomain(it) }
@@ -27,7 +27,7 @@ class CandidateUseCaseImpl @Inject constructor(
         }
     }
 
-    override suspend fun getCandidates(): Result<List<Candidate>> = withContext(Dispatchers.IO) {
+    override suspend fun getLocalCandidates(): Result<List<Candidate>> = withContext(Dispatchers.IO) {
         try {
             return@withContext Result.Success(emptyList())
         } catch (e: Exception) {

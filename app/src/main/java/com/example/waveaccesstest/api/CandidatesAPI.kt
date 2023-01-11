@@ -12,16 +12,15 @@ private const val CANDIDATES_URL = "https://firebasestorage.googleapis.com/v0/b/
 class CandidatesAPI {
     suspend fun getCandidates(): List<Candidate> = withContext(Dispatchers.IO) {
         val candidates = mutableListOf<Candidate>()
-        val doc = Jsoup.connect(CANDIDATES_URL).get()
-        var json = doc.select("body").html()
-        json = json.substring(json.indexOf("{"))
+        val doc = Jsoup.connect(CANDIDATES_URL).ignoreContentType(true).get()
+        val json = doc.select("body").html()
         val candidateArray = JSONArray(json)
         for (i in 0 until candidateArray.length()) {
             val candidateJson = candidateArray.get(i) as JSONObject
             val friendsJsonArray = candidateJson.getJSONArray("friends")
             val friends = mutableListOf<Int>()
             for (j in 0 until friendsJsonArray.length()) {
-                val friendJson = friendsJsonArray.get(i) as JSONObject
+                val friendJson = friendsJsonArray.get(j) as JSONObject
                 val friendId = friendJson.getInt("id")
                 friends.add(friendId)
             }
