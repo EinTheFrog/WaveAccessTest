@@ -9,6 +9,7 @@
     <string name="email_description">email:</string>
     <string name="phone_description">phone:</string>
     <string name="address_description">address:</string>
+    <string name="coordinates_description">coordinates:</string>
     <string name="eye_color_description">eye color:</string>
     <string name="favorite_fruit_description">favorite fruit:</string>
     <string name="about_description">about:</string>

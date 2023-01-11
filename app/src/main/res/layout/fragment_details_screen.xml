@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:textAppearance="?attr/textAppearanceHeadline4"
+            android:textAppearance="?attr/textAppearanceHeadline5"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
+            android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintLeft_toRightOf="@id/registered_description"
             app:layout_constraintTop_toBottomOf="@id/name_text"
             app:layout_constraintRight_toRightOf="parent"
@@ -55,6 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
+            android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintLeft_toRightOf="@id/age_description"
             app:layout_constraintTop_toBottomOf="@id/registered_value"
             app:layout_constraintRight_toRightOf="parent"
@@ -76,6 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
+            android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintLeft_toRightOf="@id/company_description"
             app:layout_constraintTop_toBottomOf="@id/age_value"
             app:layout_constraintRight_toRightOf="parent"
@@ -97,6 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
+            android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintLeft_toRightOf="@id/email_description"
             app:layout_constraintTop_toBottomOf="@id/company_value"
             app:layout_constraintRight_toRightOf="parent"
@@ -118,6 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
+            android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintLeft_toRightOf="@id/phone_description"
             app:layout_constraintTop_toBottomOf="@id/email_value"
             app:layout_constraintRight_toRightOf="parent"
@@ -139,8 +144,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
+            android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintLeft_toRightOf="@id/address_description"
             app:layout_constraintTop_toBottomOf="@id/phone_value"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constrainedWidth="true" />
+
+        <TextView
+            android:id="@+id/coordinates_description"
+            android:text="@string/coordinates_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/address_value" />
+
+        <TextView
+            android:id="@+id/coordinates_value"
+            android:text="(0.000000, 0.000000)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintLeft_toRightOf="@id/coordinates_description"
+            app:layout_constraintTop_toBottomOf="@id/address_value"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constrainedWidth="true" />
@@ -152,7 +180,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/address_value" />
+            app:layout_constraintTop_toBottomOf="@id/coordinates_value" />
 
         <ImageView
             android:id="@+id/eye_color_value"
@@ -162,7 +190,7 @@
             android:padding="4dp"
             android:background="@drawable/blue_eye"
             app:layout_constraintLeft_toRightOf="@id/eye_color_description"
-            app:layout_constraintTop_toBottomOf="@id/address_value"
+            app:layout_constraintTop_toBottomOf="@id/coordinates_value"
             app:layout_constraintBottom_toTopOf="@id/favorite_fruit_description" />
 
         <TextView
@@ -199,6 +227,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="4dp"
             android:paddingBottom="4dp"
+            android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/about_description" />
 
