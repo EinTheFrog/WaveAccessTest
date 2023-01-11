@@ -1,0 +1,50 @@
+package com.example.waveaccesstest.api
+
+import com.example.waveaccesstest.model.data.Candidate
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.json.JSONArray
+import org.json.JSONObject
+import org.jsoup.Jsoup
+
+private const val CANDIDATES_URL = "https://firebasestorage.googleapis.com/v0/b/candidates--questionnaire.appspot.com/o/users.json?alt=media&token=e3672c23-b1a5-4ca7-bb77-b6580d75810c"
+
+class CandidatesAPI {
+    suspend fun getCandidates(): List<Candidate> = withContext(Dispatchers.IO) {
+        val candidates = mutableListOf<Candidate>()
+        val doc = Jsoup.connect(CANDIDATES_URL).get()
+        var json = doc.select("body").html()
+        json = json.substring(json.indexOf("{"))
+        val candidateArray = JSONArray(json)
+        for (i in 0 until candidateArray.length()) {
+            val candidateJson = candidateArray.get(i) as JSONObject
+            val friendsJsonArray = candidateJson.getJSONArray("friends")
+            val friends = mutableListOf<Int>()
+            for (j in 0 until friendsJsonArray.length()) {
+                val friendJson = friendsJsonArray.get(i) as JSONObject
+                val friendId = friendJson.getInt("id")
+                friends.add(friendId)
+            }
+            val candidate = Candidate(
+                id = candidateJson.getInt("id"),
+                isActive = candidateJson.getBoolean("isActive"),
+                age = candidateJson.getInt("age"),
+                eyeColor = candidateJson.getString("eyeColor"),
+                name = candidateJson.getString("name"),
+                company = candidateJson.getString("company"),
+                email = candidateJson.getString("email"),
+                phone = candidateJson.getString("phone"),
+                address = candidateJson.getString("address"),
+                about = candidateJson.getString("about"),
+                registered = candidateJson.getString("registered"),
+                latitude = candidateJson.getDouble("latitude"),
+                longitude = candidateJson.getDouble("longitude"),
+                friends = friends,
+                favoriteFruit = candidateJson.getString("favoriteFruit")
+            )
+            candidates.add(candidate)
+        }
+
+        return@withContext candidates
+    }
+}
