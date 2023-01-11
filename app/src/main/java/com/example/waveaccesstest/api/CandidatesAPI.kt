@@ -35,7 +35,7 @@ class CandidatesAPI {
                 phone = candidateJson.getString("phone"),
                 address = candidateJson.getString("address"),
                 about = candidateJson.getString("about"),
-                registered = candidateJson.getString("registered"),
+                registered = candidateJson.getString("registered").split(" ")[0].trim(),
                 latitude = candidateJson.getDouble("latitude"),
                 longitude = candidateJson.getDouble("longitude"),
                 friends = friends,

@@ -2,6 +2,8 @@ package com.example.waveaccesstest.model.mappers
 
 import com.example.waveaccesstest.model.domain.EyeColor
 import com.example.waveaccesstest.model.domain.Fruit
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import com.example.waveaccesstest.model.data.Candidate as CandidateData
 import com.example.waveaccesstest.model.cache.Candidate as CandidateCache
 import com.example.waveaccesstest.model.domain.Candidate as CandidateDomain
@@ -39,7 +41,7 @@ class CandidatesMapper: Mapper<CandidateData, CandidateCache, CandidateDomain>()
             phone = data.phone,
             address = data.address,
             about = data.about,
-            registered = data.registered,
+            registered = LocalDateTime.parse(data.registered),
             latitude = data.latitude,
             longitude = data.longitude,
             friends = data.friends,
@@ -59,7 +61,7 @@ class CandidatesMapper: Mapper<CandidateData, CandidateCache, CandidateDomain>()
             phone = cache.phone,
             address = cache.address,
             about = cache.about,
-            registered = cache.registered,
+            registered = LocalDateTime.parse(cache.registered),
             latitude = cache.latitude,
             longitude = cache.longitude,
             friends = cache.friends,
@@ -79,7 +81,7 @@ class CandidatesMapper: Mapper<CandidateData, CandidateCache, CandidateDomain>()
             phone = domain.phone,
             address = domain.address,
             about = domain.about,
-            registered = domain.registered,
+            registered = domain.registered.format(DateTimeFormatter.ofPattern("yyy-MM-dd'T'HH:mm:ss")),
             latitude = domain.latitude,
             longitude = domain.longitude,
             friends = domain.friends,

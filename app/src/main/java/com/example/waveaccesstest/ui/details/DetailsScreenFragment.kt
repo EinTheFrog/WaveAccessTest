@@ -15,6 +15,7 @@ import com.example.waveaccesstest.model.domain.EyeColor
 import com.example.waveaccesstest.model.domain.Fruit
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class DetailsScreenFragment: Fragment() {
@@ -37,8 +38,11 @@ class DetailsScreenFragment: Fragment() {
             candidateDetailsViewModel.candidateState.collect { state ->
                 val candidate = state.candidate
                 if (candidate != null) {
+                    val formatter = DateTimeFormatter.ofPattern("HH:mm dd.MM.yy")
+                    val formattedRegisteredDate = candidate.registered.format(formatter).toString()
+
                     binding.nameText.text = candidate.name
-                    binding.registeredValue.text = candidate.registered
+                    binding.registeredValue.text =formattedRegisteredDate
                     binding.ageValue.text = candidate.age.toString()
                     binding.companyValue.text = candidate.company
                     binding.emailValue.text = candidate.email

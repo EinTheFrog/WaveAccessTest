@@ -1,5 +1,7 @@
 package com.example.waveaccesstest.model.domain
 
+import java.time.LocalDateTime
+
 data class Candidate(
     val id: Long,
     val isActive: Boolean,
@@ -11,7 +13,7 @@ data class Candidate(
     val phone: String,
     val address: String,
     val about: String,
-    val registered: String,
+    val registered: LocalDateTime,
     val latitude: Double,
     val longitude: Double,
     val friends: List<Long>,
