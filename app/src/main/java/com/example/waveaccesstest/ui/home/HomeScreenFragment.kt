@@ -43,18 +43,16 @@ class HomeScreenFragment : Fragment() {
         val candidateListViewModel by viewModels<CandidateListViewModel>()
         candidateListViewModel.getCandidates()
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            candidateListViewModel.syncCandidates()
+        }
+
         lifecycleScope.launch {
             candidateListViewModel.candidateListState.collect { state ->
                 val loading = state.isLoading
                 val candidates = state.candidates
 
-                if (loading) {
-                    binding.progressBar.visibility = View.VISIBLE
-                    binding.candidatesRecycler.visibility = View.GONE
-                } else {
-                    binding.progressBar.visibility = View.GONE
-                    binding.candidatesRecycler.visibility = View.VISIBLE
-                }
+                binding.swipeRefreshLayout.isRefreshing = loading
 
                 if (candidates.isNotEmpty()) {
                     candidateList.clear()
