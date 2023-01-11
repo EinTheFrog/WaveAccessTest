@@ -17,4 +17,8 @@
     <string name="apple_emoji">🍎</string>
     <string name="banana_emoji">🍌</string>
     <string name="strawberry_emoji">🍓</string>
+
+    <string name="no_email_error">No email app was found</string>
+    <string name="no_phone_error">No phone app was found</string>
+    <string name="no_map_error">No map app was found</string>
 </resources>

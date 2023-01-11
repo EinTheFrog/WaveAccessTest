@@ -1,9 +1,13 @@
 package com.example.waveaccesstest.ui.details
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,6 +25,8 @@ import com.example.waveaccesstest.ui.widgets.CandidateListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
+import java.util.*
+import java.util.jar.Manifest
 
 @AndroidEntryPoint
 class DetailsScreenFragment: Fragment() {
@@ -64,6 +70,7 @@ class DetailsScreenFragment: Fragment() {
                     binding.emailValue.text = candidate.email
                     binding.phoneValue.text = candidate.phone
                     binding.addressValue.text = candidate.address
+                    binding.coordinatesValue.text = "(${candidate.latitude}, ${candidate.longitude})"
                     binding.eyeColorValue.background = when(candidate.eyeColor) {
                         EyeColor.BROWN -> AppCompatResources.getDrawable(requireContext(), R.drawable.brown_eye)
                         EyeColor.GREEN -> AppCompatResources.getDrawable(requireContext(), R.drawable.green_eye)
@@ -80,6 +87,45 @@ class DetailsScreenFragment: Fragment() {
                     friendsList.addAll(state.candidateFriends)
                     friendsRecyclerAdapter.notifyDataSetChanged()
                 }
+            }
+        }
+
+        binding.emailValue.setOnClickListener {
+            val candidate = candidateDetailsViewModel.candidateState.value.candidate ?: return@setOnClickListener
+            val intent = Intent(Intent.ACTION_SENDTO)
+            intent.data = Uri.parse(
+                String.format(Locale.ENGLISH, "mailto:%s", candidate.email)
+            )
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(context, R.string.no_email_error, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.phoneValue.setOnClickListener {
+            val candidate = candidateDetailsViewModel.candidateState.value.candidate ?: return@setOnClickListener
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse(
+                String.format(Locale.ENGLISH, "tel:%s", candidate.phone)
+            )
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(context, R.string.no_phone_error, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.coordinatesValue.setOnClickListener {
+            val candidate = candidateDetailsViewModel.candidateState.value.candidate ?: return@setOnClickListener
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(
+                String.format(Locale.ENGLISH, "geo:%f,%f", candidate.latitude, candidate.longitude)
+            )
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(context, R.string.no_map_error, Toast.LENGTH_SHORT).show()
             }
         }
 
