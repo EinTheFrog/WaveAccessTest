@@ -17,6 +17,7 @@ private const val CANDIDATE_VIEW_MODEL_TAG = "CandidateViewModelTag"
 
 data class CandidateState(
     val candidate: Candidate?,
+    val candidateFriends: List<Candidate>,
     val isLoading: Boolean
 )
 
@@ -28,6 +29,7 @@ class CandidateDetailsViewModel @Inject constructor(
     private val _candidateState: MutableStateFlow<CandidateState> = MutableStateFlow(
         CandidateState(
             candidate = null,
+            candidateFriends = emptyList(),
             isLoading = false
         )
     )
@@ -37,17 +39,37 @@ class CandidateDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             _candidateState.update { state -> state.copy(isLoading = true) }
 
-            val result = candidatesUseCase.getLocalCandidateById(candidateId)
-            when(result) {
-                is Result.Success -> {
-                    _candidateState.update { state -> state.copy(candidate = result.data) }
-                }
-                is Result.Error -> {
-                    Log.e(CANDIDATE_VIEW_MODEL_TAG, result.exception.toString(), result.exception)
-                }
+            getLocalCandidateById(candidateId)
+            val candidate = candidateState.value.candidate
+            if (candidate != null) {
+               getCandidateFriends(candidate)
             }
 
             _candidateState.update { state -> state.copy(isLoading = false) }
+        }
+    }
+
+    private suspend fun getLocalCandidateById(candidateId: Long) {
+        val result = candidatesUseCase.getLocalCandidateById(candidateId)
+        when(result) {
+            is Result.Success -> {
+                _candidateState.update { state -> state.copy(candidate = result.data) }
+            }
+            is Result.Error -> {
+                Log.e(CANDIDATE_VIEW_MODEL_TAG, result.exception.toString(), result.exception)
+            }
+        }
+    }
+
+    private suspend fun getCandidateFriends(candidate: Candidate) {
+        val result = candidatesUseCase.getLocalCandidatesByIds(candidate.friends)
+        when(result) {
+            is Result.Success -> {
+                _candidateState.update { state -> state.copy(candidateFriends = result.data) }
+            }
+            is Result.Error -> {
+                Log.e(CANDIDATE_VIEW_MODEL_TAG, result.exception.toString(), result.exception)
+            }
         }
     }
 }

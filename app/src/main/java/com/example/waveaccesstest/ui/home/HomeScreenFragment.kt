@@ -34,7 +34,8 @@ class HomeScreenFragment : Fragment() {
         val candidateList = mutableListOf<Candidate>()
         val candidateRecyclerAdapter = CandidateListAdapter(candidateList) { candidateId ->
             val navController = binding.candidatesRecycler.findNavController()
-            val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToDetailsScreenFragment(candidateId = candidateId)
+            val action = HomeScreenFragmentDirections
+                .actionHomeScreenFragmentToDetailsScreenFragment(candidateId = candidateId)
             navController.navigate(action)
         }
         binding.candidatesRecycler.adapter = candidateRecyclerAdapter
