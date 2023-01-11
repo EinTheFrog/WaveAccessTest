@@ -11,6 +11,7 @@ import javax.inject.Inject
 interface CandidatesUseCase {
     suspend fun fetchCandidates(): Result<List<Candidate>>
     suspend fun getLocalCandidates(): Result<List<Candidate>>
+    suspend fun getLocalCandidateById(id: Long): Result<Candidate>
 }
 
 class CandidatesUseCaseImpl @Inject constructor(
@@ -41,4 +42,13 @@ class CandidatesUseCaseImpl @Inject constructor(
         }
     }
 
+    override suspend fun getLocalCandidateById(id: Long): Result<Candidate> = withContext(Dispatchers.IO) {
+        try {
+            val cacheCandidate = candidatesDao.getCandidateById(id)
+            val domainCandidate = candidatesMapper.cacheToDomain(cacheCandidate)
+            return@withContext Result.Success(domainCandidate)
+        } catch (e: Exception) {
+            return@withContext Result.Error(e)
+        }
+    }
 }

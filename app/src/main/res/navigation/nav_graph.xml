@@ -20,7 +20,7 @@
             android:id="@+id/action_detailsScreenFragment_to_detailsScreenFragment"
             app:destination="@id/detailsScreenFragment" />
         <argument
-            android:name="userId"
-            app:argType="integer" />
+            android:name="candidateId"
+            app:argType="long" />
     </fragment>
 </navigation>

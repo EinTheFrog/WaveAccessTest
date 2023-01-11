@@ -28,12 +28,12 @@ class HomeScreenFragment : Fragment() {
         val binding = FragmentHomeScreenBinding.inflate(inflater)
         binding.goToDetailsButton1.setOnClickListener{ view ->
             val navController = view.findNavController()
-            val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToDetailsScreenFragment(userId = 1)
+            val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToDetailsScreenFragment(candidateId = 0)
             navController.navigate(action)
         }
         binding.goToDetailsButton2.setOnClickListener{ view ->
             val navController = view.findNavController()
-            val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToDetailsScreenFragment(userId = 2)
+            val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToDetailsScreenFragment(candidateId = 1)
             navController.navigate(action)
         }
 
