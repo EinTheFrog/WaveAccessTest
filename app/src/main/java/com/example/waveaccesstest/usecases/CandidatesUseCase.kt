@@ -12,6 +12,7 @@ interface CandidatesUseCase {
     suspend fun fetchCandidates(): Result<List<Candidate>>
     suspend fun getLocalCandidates(): Result<List<Candidate>>
     suspend fun getLocalCandidateById(id: Long): Result<Candidate>
+    suspend fun getLocalCandidatesByIds(ids: List<Long>): Result<List<Candidate>>
 }
 
 class CandidatesUseCaseImpl @Inject constructor(
@@ -47,6 +48,17 @@ class CandidatesUseCaseImpl @Inject constructor(
             val cacheCandidate = candidatesDao.getCandidateById(id)
             val domainCandidate = candidatesMapper.cacheToDomain(cacheCandidate)
             return@withContext Result.Success(domainCandidate)
+        } catch (e: Exception) {
+            return@withContext Result.Error(e)
+        }
+    }
+
+    override suspend fun getLocalCandidatesByIds(ids: List<Long>): Result<List<Candidate>>
+    = withContext(Dispatchers.IO) {
+        try {
+            val cacheCandidates = candidatesDao.getCandidatesByIds(ids)
+            val domainCandidates = cacheCandidates.map { candidatesMapper.cacheToDomain(it) }
+            return@withContext Result.Success(domainCandidates)
         } catch (e: Exception) {
             return@withContext Result.Error(e)
         }

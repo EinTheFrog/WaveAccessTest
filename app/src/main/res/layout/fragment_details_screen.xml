@@ -1,201 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/name_text"
-        android:text="name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:textAppearance="?attr/textAppearanceHeadline4"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/registered_description"
-        android:text="@string/registered_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name_text" />
+        <TextView
+            android:id="@+id/name_text"
+            android:text="name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/registered_value"
-        android:text="01.01.2001"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toRightOf="@id/registered_description"
-        app:layout_constraintTop_toBottomOf="@id/name_text"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constrainedWidth="true" />
+        <TextView
+            android:id="@+id/registered_description"
+            android:text="@string/registered_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_text" />
 
-    <TextView
-        android:id="@+id/age_description"
-        android:text="@string/age_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registered_value" />
+        <TextView
+            android:id="@+id/registered_value"
+            android:text="01.01.2001"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toRightOf="@id/registered_description"
+            app:layout_constraintTop_toBottomOf="@id/name_text"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constrainedWidth="true" />
 
-    <TextView
-        android:id="@+id/age_value"
-        android:text="40"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toRightOf="@id/age_description"
-        app:layout_constraintTop_toBottomOf="@id/registered_value"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constrainedWidth="true" />
+        <TextView
+            android:id="@+id/age_description"
+            android:text="@string/age_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/registered_value" />
 
-    <TextView
-        android:id="@+id/company_description"
-        android:text="@string/company_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/age_value" />
+        <TextView
+            android:id="@+id/age_value"
+            android:text="40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toRightOf="@id/age_description"
+            app:layout_constraintTop_toBottomOf="@id/registered_value"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constrainedWidth="true" />
 
-    <TextView
-        android:id="@+id/company_value"
-        android:text="Company Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toRightOf="@id/company_description"
-        app:layout_constraintTop_toBottomOf="@id/age_value"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constrainedWidth="true" />
+        <TextView
+            android:id="@+id/company_description"
+            android:text="@string/company_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/age_value" />
 
-    <TextView
-        android:id="@+id/email_description"
-        android:text="@string/email_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/company_value" />
+        <TextView
+            android:id="@+id/company_value"
+            android:text="Company Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toRightOf="@id/company_description"
+            app:layout_constraintTop_toBottomOf="@id/age_value"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constrainedWidth="true" />
 
-    <TextView
-        android:id="@+id/email_value"
-        android:text="email@mail.com"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toRightOf="@id/email_description"
-        app:layout_constraintTop_toBottomOf="@id/company_value"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constrainedWidth="true" />
+        <TextView
+            android:id="@+id/email_description"
+            android:text="@string/email_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/company_value" />
 
-    <TextView
-        android:id="@+id/phone_description"
-        android:text="@string/phone_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_value" />
+        <TextView
+            android:id="@+id/email_value"
+            android:text="email@mail.com"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toRightOf="@id/email_description"
+            app:layout_constraintTop_toBottomOf="@id/company_value"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constrainedWidth="true" />
 
-    <TextView
-        android:id="@+id/phone_value"
-        android:text="+1 111-111-1111"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toRightOf="@id/phone_description"
-        app:layout_constraintTop_toBottomOf="@id/email_value"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constrainedWidth="true" />
+        <TextView
+            android:id="@+id/phone_description"
+            android:text="@string/phone_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email_value" />
 
-    <TextView
-        android:id="@+id/address_description"
-        android:text="@string/address_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phone_value" />
+        <TextView
+            android:id="@+id/phone_value"
+            android:text="+1 111-111-1111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toRightOf="@id/phone_description"
+            app:layout_constraintTop_toBottomOf="@id/email_value"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constrainedWidth="true" />
 
-    <TextView
-        android:id="@+id/address_value"
-        android:text="3828 Piermont Dr, Albuquerque, NM, United States of America"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toRightOf="@id/address_description"
-        app:layout_constraintTop_toBottomOf="@id/phone_value"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constrainedWidth="true" />
+        <TextView
+            android:id="@+id/address_description"
+            android:text="@string/address_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phone_value" />
 
-    <TextView
-        android:id="@+id/eye_color_description"
-        android:text="@string/eye_color_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/address_value" />
+        <TextView
+            android:id="@+id/address_value"
+            android:text="3828 Piermont Dr, Albuquerque, NM, United States of America"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toRightOf="@id/address_description"
+            app:layout_constraintTop_toBottomOf="@id/phone_value"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constrainedWidth="true" />
 
-    <ImageView
-        android:id="@+id/eye_color_value"
-        android:text="@string/eye_color_description"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:padding="4dp"
-        android:background="@drawable/blue_eye"
-        app:layout_constraintLeft_toRightOf="@id/eye_color_description"
-        app:layout_constraintTop_toBottomOf="@id/address_value"
-        app:layout_constraintBottom_toTopOf="@id/favorite_fruit_description" />
+        <TextView
+            android:id="@+id/eye_color_description"
+            android:text="@string/eye_color_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/address_value" />
 
-    <TextView
-        android:id="@+id/favorite_fruit_description"
-        android:text="@string/favorite_fruit_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eye_color_description" />
+        <ImageView
+            android:id="@+id/eye_color_value"
+            android:text="@string/eye_color_description"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:padding="4dp"
+            android:background="@drawable/blue_eye"
+            app:layout_constraintLeft_toRightOf="@id/eye_color_description"
+            app:layout_constraintTop_toBottomOf="@id/address_value"
+            app:layout_constraintBottom_toTopOf="@id/favorite_fruit_description" />
 
-    <TextView
-        android:id="@+id/favorite_fruit_value"
-        android:text="@string/apple_emoji"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toRightOf="@id/favorite_fruit_description"
-        app:layout_constraintTop_toBottomOf="@id/eye_color_description" />
+        <TextView
+            android:id="@+id/favorite_fruit_description"
+            android:text="@string/favorite_fruit_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/eye_color_description" />
 
-    <TextView
-        android:id="@+id/about_description"
-        android:text="@string/about_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/favorite_fruit_value" />
+        <TextView
+            android:id="@+id/favorite_fruit_value"
+            android:text="@string/apple_emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toRightOf="@id/favorite_fruit_description"
+            app:layout_constraintTop_toBottomOf="@id/eye_color_description" />
 
-    <TextView
-        android:id="@+id/about_value"
-        android:text="Some information about me."
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="4dp"
-        android:paddingBottom="4dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/about_description" />
+        <TextView
+            android:id="@+id/about_description"
+            android:text="@string/about_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/favorite_fruit_value" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/about_value"
+            android:text="Some information about me."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="4dp"
+            android:paddingBottom="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/about_description" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/friends_recycler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/about_value"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

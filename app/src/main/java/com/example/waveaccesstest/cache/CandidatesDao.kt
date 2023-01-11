@@ -13,6 +13,9 @@ interface CandidatesDao {
     @Query("SELECT * FROM ${Candidate.TABLE_NAME} WHERE id = :candidateId")
     suspend fun getCandidateById(candidateId: Long): Candidate
 
+    @Query("SELECT * FROM ${Candidate.TABLE_NAME} WHERE id IN (:candidateIds)")
+    suspend fun getCandidatesByIds(candidateIds: List<Long>): List<Candidate>
+
     @Upsert(entity = Candidate::class)
     fun upsertCandidates(list: List<Candidate>)
 }
