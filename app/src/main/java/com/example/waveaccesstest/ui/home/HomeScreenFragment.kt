@@ -9,7 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.waveaccesstest.databinding.FragmentHomeScreenBinding
+import com.example.waveaccesstest.model.domain.Candidate
+import com.example.waveaccesstest.ui.widgets.CandidateListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,16 +30,15 @@ class HomeScreenFragment : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
 
         val binding = FragmentHomeScreenBinding.inflate(inflater)
-        binding.goToDetailsButton1.setOnClickListener{ view ->
-            val navController = view.findNavController()
-            val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToDetailsScreenFragment(candidateId = 0)
+
+        val candidateList = mutableListOf<Candidate>()
+        val candidateRecyclerAdapter = CandidateListAdapter(candidateList) { candidateId ->
+            val navController = binding.candidatesRecycler.findNavController()
+            val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToDetailsScreenFragment(candidateId = candidateId)
             navController.navigate(action)
         }
-        binding.goToDetailsButton2.setOnClickListener{ view ->
-            val navController = view.findNavController()
-            val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToDetailsScreenFragment(candidateId = 1)
-            navController.navigate(action)
-        }
+        binding.candidatesRecycler.adapter = candidateRecyclerAdapter
+        binding.candidatesRecycler.layoutManager = LinearLayoutManager(context)
 
         val candidateListViewModel by viewModels<CandidateListViewModel>()
         candidateListViewModel.getCandidates()
@@ -47,14 +50,16 @@ class HomeScreenFragment : Fragment() {
 
                 if (loading) {
                     binding.progressBar.visibility = View.VISIBLE
-                    binding.parentLayout.visibility = View.GONE
+                    binding.candidatesRecycler.visibility = View.GONE
                 } else {
                     binding.progressBar.visibility = View.GONE
-                    binding.parentLayout.visibility = View.VISIBLE
+                    binding.candidatesRecycler.visibility = View.VISIBLE
                 }
 
                 if (candidates.isNotEmpty()) {
-                    binding.greetingText.text = "Hello ${candidates[0].name}!"
+                    candidateList.clear()
+                    candidateList.addAll(candidates)
+                    candidateRecyclerAdapter.notifyDataSetChanged()
                 }
             }
         }
