@@ -16,6 +16,7 @@
     <string name="eye_color_description">eye color:</string>
     <string name="favorite_fruit_description">favorite fruit:</string>
     <string name="about_description">about:</string>
+    <string name="friends_description">Friends</string>
 
     <string name="apple_emoji">🍎</string>
     <string name="banana_emoji">🍌</string>

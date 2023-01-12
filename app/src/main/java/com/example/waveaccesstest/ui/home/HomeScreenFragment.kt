@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import com.example.waveaccesstest.databinding.FragmentDetailsScreenBinding
 import com.example.waveaccesstest.databinding.FragmentHomeScreenBinding
 import com.example.waveaccesstest.model.domain.Candidate
 import com.example.waveaccesstest.ui.widgets.CandidateListAdapter
@@ -48,6 +49,22 @@ class HomeScreenFragment : Fragment() {
             candidateListViewModel.syncCandidates()
         }
 
+        subscribeToViewModelUpdates(
+            candidateListViewModel = candidateListViewModel,
+            binding = binding,
+            candidateRecyclerAdapter = candidateRecyclerAdapter,
+            candidateList = candidateList
+        )
+
+        return binding.root
+    }
+
+    private fun subscribeToViewModelUpdates(
+        candidateListViewModel: CandidateListViewModel,
+        binding: FragmentHomeScreenBinding,
+        candidateRecyclerAdapter: CandidateListAdapter,
+        candidateList: MutableList<Candidate>
+    ) {
         lifecycleScope.launch {
             candidateListViewModel.candidateListState.collect { state ->
                 val loading = state.isLoading
@@ -62,7 +79,5 @@ class HomeScreenFragment : Fragment() {
                 }
             }
         }
-
-        return binding.root
     }
 }
