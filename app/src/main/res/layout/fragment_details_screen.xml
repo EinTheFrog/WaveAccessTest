@@ -197,7 +197,8 @@
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:padding="4dp"
-            android:background="@drawable/blue_eye"
+            android:background="@drawable/eye_shape"
+            android:backgroundTint="@color/green_eye"
             app:layout_constraintLeft_toRightOf="@id/eye_color_description"
             app:layout_constraintTop_toBottomOf="@id/coordinates_value"
             app:layout_constraintBottom_toTopOf="@id/favorite_fruit_description" />
@@ -217,6 +218,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
+            android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintLeft_toRightOf="@id/favorite_fruit_description"
             app:layout_constraintTop_toBottomOf="@id/eye_color_description" />
 
@@ -244,6 +246,7 @@
             android:id="@+id/friends_recycler"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:paddingVertical="4dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/about_value"
             app:layout_constraintRight_toRightOf="parent" />

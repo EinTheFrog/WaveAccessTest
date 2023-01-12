@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -71,11 +72,12 @@ class DetailsScreenFragment: Fragment() {
                     binding.phoneValue.text = candidate.phone
                     binding.addressValue.text = candidate.address
                     binding.coordinatesValue.text = "(${candidate.latitude}, ${candidate.longitude})"
-                    binding.eyeColorValue.background = when(candidate.eyeColor) {
-                        EyeColor.BROWN -> AppCompatResources.getDrawable(requireContext(), R.drawable.brown_eye)
-                        EyeColor.GREEN -> AppCompatResources.getDrawable(requireContext(), R.drawable.green_eye)
-                        EyeColor.BLUE -> AppCompatResources.getDrawable(requireContext(), R.drawable.blue_eye)
+                    val eyeTintColor = when(candidate.eyeColor) {
+                        EyeColor.BROWN -> ContextCompat.getColor(requireContext(), R.color.brown_eye)
+                        EyeColor.GREEN -> ContextCompat.getColor(requireContext(), R.color.green_eye)
+                        EyeColor.BLUE -> ContextCompat.getColor(requireContext(), R.color.blue_eye)
                     }
+                    binding.eyeColorValue.background.setTint(eyeTintColor)
                     binding.favoriteFruitValue.text = when(candidate.favoriteFruit) {
                         Fruit.APPLE -> requireContext().getString(R.string.apple_emoji)
                         Fruit.BANANA -> requireContext().getString(R.string.banana_emoji)
