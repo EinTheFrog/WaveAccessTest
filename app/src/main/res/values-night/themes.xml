@@ -2,15 +2,27 @@
     <!-- Base application theme. -->
     <style name="Theme.WaveAccessTest" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/salad</item>
+        <item name="colorPrimaryVariant">@color/light_blue</item>
+        <item name="colorOnPrimary">@color/dark_salad</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/light_gray</item>
+        <item name="colorSecondaryVariant">@color/gray</item>
+        <item name="colorOnSecondary">@color/dark_gray</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Background color. -->
+        <item name="android:colorBackground">@color/black</item>
+        <item name="colorOnBackground">@color/paper_white</item>
+        <item name="colorSurface">@color/dark_gray</item>
+        <item name="colorSurfaceVariant">@color/cold_dark_gray</item>
+        <item name="colorOnSurface">@color/paper_white</item>
+        <!-- Container color. -->
+        <item name="colorPrimaryContainer">@color/green</item>
+        <item name="colorSecondaryContainer">@color/dark_gray</item>
+        <item name="colorOnPrimaryContainer">@color/salad</item>
+        <!-- Text color. -->
+        <item name="colorOnSurfaceVariant">@color/salad</item>
+        <item name="colorError">@color/light_red</item>
     </style>
 </resources>

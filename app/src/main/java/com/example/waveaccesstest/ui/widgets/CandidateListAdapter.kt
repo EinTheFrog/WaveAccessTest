@@ -12,8 +12,8 @@ class CandidateListAdapter(
     private val candidates: List<Candidate>,
     private val onCandidateClick: (Long) -> Unit
 ): RecyclerView.Adapter<CandidateListAdapter.ViewHolder>() {
-    private lateinit var activeTrue: String
-    private lateinit var activeFalse: String
+    private var activeTrue: String? = null
+    private var activeFalse: String? = null
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val parent: View
@@ -34,8 +34,8 @@ class CandidateListAdapter(
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.candidate_list_item, parent, false)
 
-        activeTrue = parent.context.getString(R.string.candidate_active_true)
-        activeFalse = parent.context.getString(R.string.candidate_active_false)
+        if (activeTrue == null) activeTrue = parent.context.getString(R.string.candidate_active_true)
+        if (activeFalse == null) activeFalse = parent.context.getString(R.string.candidate_active_false)
 
         return ViewHolder(view)
     }
@@ -43,8 +43,11 @@ class CandidateListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val candidate = candidates[position]
         holder.name.text = candidate.name
+        holder.name.isEnabled = true
         holder.email.text = candidate.email
+        holder.email.isEnabled = true
         holder.active.text = if (candidate.isActive) activeTrue else activeFalse
+        holder.active.isEnabled = true
         if (candidate.isActive) {
             holder.parent.isClickable = true
             holder.parent.setOnClickListener {
@@ -52,6 +55,9 @@ class CandidateListAdapter(
             }
         } else {
             holder.parent.isClickable = false
+            holder.name.isEnabled = false
+            holder.email.isEnabled = false
+            holder.active.isEnabled = false
         }
 
     }
