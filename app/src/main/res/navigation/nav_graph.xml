@@ -7,6 +7,7 @@
 
     <fragment
         android:id="@+id/homeScreenFragment"
+        android:label="@string/home_screen_label"
         android:name="com.example.waveaccesstest.ui.home.HomeScreenFragment">
         <action
             android:id="@+id/action_homeScreenFragment_to_detailsScreenFragment"
@@ -19,6 +20,7 @@
 
     <fragment
         android:id="@+id/detailsScreenFragment"
+        android:label="@string/details_screen_label"
         android:name="com.example.waveaccesstest.ui.details.DetailsScreenFragment">
         <argument
             android:name="candidateId"
